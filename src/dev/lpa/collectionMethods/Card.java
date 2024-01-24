@@ -1,4 +1,4 @@
-package dev.lpa;
+package dev.lpa.collectionMethods;
 
 import java.util.ArrayList;
 import java.util.List;
