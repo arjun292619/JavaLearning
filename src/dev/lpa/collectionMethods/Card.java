@@ -52,7 +52,7 @@ public record Card(Suit suit, String face, int rank) {
     }
 
     public static void printDeck(List<Card> deck, String description, int rows){
-        System.out.println("-".repeat(30));
+        System.out.println("-".repeat(52));
         if(description !=null){
             System.out.println(description);
         }
@@ -60,7 +60,7 @@ public record Card(Suit suit, String face, int rank) {
         for(int i=0;i<rows;i++){
             int start = i*cardCols;
             int end = start+cardCols;
-            deck.subList(start,end).forEach(card-> System.out.print(card+""));
+            deck.subList(start,end).forEach(card-> System.out.print(card+" "));
             System.out.println();
         }
 
