@@ -41,12 +41,40 @@ public class Contact {
         return "%s: %s %s".formatted(name, emails, phones);
     }
 
-    public Contact mergeContact(Contact contact){
+    public Contact mergeContact(Contact contact) {
         Contact newContact = new Contact(name);
         newContact.emails = new HashSet<>(emails);
         newContact.phones = new HashSet<>(phones);
         newContact.emails.addAll(contact.emails);
         newContact.phones.addAll(contact.phones);
         return newContact;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+
+        Contact contact = (Contact) o;
+
+        return name.equals(contact.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return 33 * name.hashCode();
+    }
+
+    public void addEmail(String companyName){
+        String[] names = name.split(" ");
+        String email = "%c%s@%s.com".formatted(name.charAt(0),names[names.length-1],companyName.replaceAll(" ","").toLowerCase());
+        emails.add(email);
+    }
+
+    public void replaceEmail(String oldEmail,String newEmail){
+        if(emails.contains(oldEmail)){
+            emails.remove(oldEmail);
+            emails.add(newEmail);
+        }
     }
 }
