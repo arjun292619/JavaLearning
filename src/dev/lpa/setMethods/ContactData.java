@@ -15,6 +15,7 @@ public class ContactData {
                         Robin Hood, 7899028222
                         Lucy Van Pelt, 5642086852
                         Mickey Mouse, 9998887777
+                        Charlie Brown, 3334445555
             """;
 
     private static final String emailData = """
