@@ -58,7 +58,7 @@ public class Theatre {
         System.out.printf("%1$s%n%2$s Seat Map %n%1$s%n", lineSeparator, theatreName);
         int index = 0;
         for (Seat seat : seats) {
-            System.out.printf("%-8s%s", seat.seatNum + ((seat.isReserved ? "\u25CF" : "")), (index++ + 1) % seatsPerRow == 0 ? "\n" : "");
+            System.out.printf("%-8s %s", seat.seatNum + ((seat.isReserved ? "(\u25CF)" : "")), (index++ + 1) % seatsPerRow == 0 ? "\n" : "");
         }
         System.out.println(lineSeparator);
     }
@@ -71,7 +71,7 @@ public class Theatre {
             System.out.printf(": Seat must be between %s and %s%n", seats.first().seatNum, seats.last().seatNum);
         } else {
             if (!requestedSeat.isReserved) {
-                requestedSeat.isReserved = true;
+                matchedSeat.isReserved = true;
                 return requestedSeat.seatNum;
             } else {
                 System.out.println("Seat is already reserved");
