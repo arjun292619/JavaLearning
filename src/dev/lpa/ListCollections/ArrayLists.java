@@ -1,8 +1,6 @@
 package dev.lpa.ListCollections;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 public class ArrayLists {
     private record GroceryItem(String name, String type, int count) {
@@ -44,7 +42,7 @@ public class ArrayLists {
 
         //using List.of for instantiation
         String[] items = {"apples", "bananas", "milk", "eggs"};
-        String[] stationaryArray = {"books","pencil","paints","brush","papers"};
+        String[] stationaryArray = {"books", "pencil", "paints", "brush", "papers"};
 
         List<String> list = List.of(items);
         System.out.println(list);
@@ -57,5 +55,45 @@ public class ArrayLists {
         System.out.println(groceries.getClass().getName());
         groceries.addAll(List.of(stationaryArray));
         System.out.println(groceries);
+
+        System.out.println("third item is: " + groceries.get(2));
+
+        if (groceries.contains("books")) {
+            System.out.println("groceries contain books");
+        }
+
+        groceries.add("yogurt");
+        System.out.println("1st index of yogurt: " + groceries.indexOf("yogurt"));
+        System.out.println("last index of yogurt: " + groceries.lastIndexOf("yogurt"));
+
+        groceries.remove("yogurt");
+        System.out.println(groceries);
+
+        groceries.removeAll(List.of("apples", "bananas", "milk", "paper"));
+        System.out.println(groceries);
+
+        groceries.retainAll(List.of("pencil", "brush"));
+        System.out.println(groceries);
+
+        groceries.clear();
+        System.out.println(groceries);
+        System.out.println("is groceries list empty: " + groceries.isEmpty());
+
+        groceries.addAll(List.of("apples","pickles","mustard","cheese"));
+        groceries.addAll(Arrays.asList(items));
+        groceries.addAll(List.of("Ham","eggs","butter"));
+        System.out.println(groceries);
+
+        groceries.sort(Comparator.naturalOrder());
+        System.out.println(groceries);
+
+        groceries.sort(Comparator.reverseOrder());
+        System.out.println(groceries);
+
+        groceries.sort(Comparator.comparing(String::toLowerCase));
+        System.out.println(groceries);
+
+        var groceryArr = groceries.toArray(new String[3]);
+        System.out.println(Arrays.toString(groceryArr));
     }
 }
