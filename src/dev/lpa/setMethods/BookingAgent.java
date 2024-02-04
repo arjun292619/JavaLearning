@@ -10,6 +10,10 @@ public class BookingAgent {
 
         belasco.printSeatMap();
         reserveSeat(belasco,'A',3);
+        reserveSeat(belasco,'A',3);
+        reserveSeat(belasco,'B',1);
+        reserveSeat(belasco,'B',11);
+        reserveSeat(belasco,'M',1);
     }
 
     private static void reserveSeat(Theatre theatre, char row, int seat) {

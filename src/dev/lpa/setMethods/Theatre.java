@@ -66,13 +66,13 @@ public class Theatre {
     public String reserveSeat(char row, int seat) {
         Seat requestedSeat = new Seat(row, seat);
         Seat matchedSeat = seats.floor(requestedSeat);
-        if (matchedSeat == null && !requestedSeat.seatNum.equals(matchedSeat.seatNum)) {
+        if (matchedSeat == null || !matchedSeat.seatNum.equals(requestedSeat.seatNum)) {
             System.out.print("---> No such seat: " + requestedSeat);
             System.out.printf(": Seat must be between %s and %s%n", seats.first().seatNum, seats.last().seatNum);
         } else {
-            if (!requestedSeat.isReserved) {
+            if (!matchedSeat.isReserved) {
                 matchedSeat.isReserved = true;
-                return requestedSeat.seatNum;
+                return matchedSeat.seatNum;
             } else {
                 System.out.println("Seat is already reserved");
             }
