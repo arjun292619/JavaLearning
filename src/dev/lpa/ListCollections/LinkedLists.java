@@ -1,6 +1,7 @@
 package dev.lpa.ListCollections;
 
 import java.util.LinkedList;
+import java.util.List;
 
 public class LinkedLists {
     public static void main(String[] args) {
@@ -9,15 +10,18 @@ public class LinkedLists {
         placesToVisit.add("Columbus");
         placesToVisit.add("New York");
         placesToVisit.add("Portland");
-        placesToVisit.add(0,"Denver");
+        placesToVisit.add(0, "Denver");
 
         addMoreElements(placesToVisit);
         System.out.println(placesToVisit);
         removeMoreElements(placesToVisit);
         System.out.println(placesToVisit);
+        addMoreElements(placesToVisit);
+        System.out.println(placesToVisit);
+        getElements(placesToVisit);
     }
 
-    private static void addMoreElements(LinkedList<String> list){
+    private static void addMoreElements(LinkedList<String> list) {
         list.add("San Francisco");
         list.addFirst("Tampa");
         list.addLast("Roswell");
@@ -29,7 +33,7 @@ public class LinkedLists {
         list.push("Salt Lake City");
     }
 
-    private static void removeMoreElements(LinkedList<String> list){
+    private static void removeMoreElements(LinkedList<String> list) {
         list.remove(4);
         list.remove("Tampa");
         list.remove();
@@ -51,6 +55,22 @@ public class LinkedLists {
         //stack removal
         String popped = list.pop();
         System.out.println(popped + " was removed from the list");
+    }
+
+    private static void getElements(LinkedList<String> list) {
+        System.out.println("the fifth element in the list is: " + list.get(4));
+        System.out.println("getting the first element in the list is: " + list.getFirst());
+        System.out.println("getting the last element in the list is: " + list.getLast());
+
+        System.out.println("SFO is at index "+list.indexOf("San Francisco"));
+        System.out.println("SFO is at last index "+list.lastIndexOf("San Francisco"));
+
+        //queue methods
+        System.out.println("getting the first element in the list via queue is: " + list.element());
+
+        //stack methods
+        System.out.println("getting the first element in the list via stack peek is: " + list.peek());
+
     }
 
 }
