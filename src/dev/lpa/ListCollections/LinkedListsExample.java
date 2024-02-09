@@ -1,9 +1,8 @@
 package dev.lpa.ListCollections;
 
 import java.util.LinkedList;
-import java.util.List;
 
-public class LinkedLists {
+public class LinkedListsExample {
     public static void main(String[] args) {
         LinkedList<String> placesToVisit = new LinkedList<>();
         placesToVisit.add("Chicago");
@@ -19,6 +18,10 @@ public class LinkedLists {
         addMoreElements(placesToVisit);
         System.out.println(placesToVisit);
         getElements(placesToVisit);
+
+        traversalWthFor(placesToVisit);
+        traversalWthEnhancedFor(placesToVisit);
+        traversalWthIterator(placesToVisit);
     }
 
     private static void addMoreElements(LinkedList<String> list) {
@@ -62,8 +65,8 @@ public class LinkedLists {
         System.out.println("getting the first element in the list is: " + list.getFirst());
         System.out.println("getting the last element in the list is: " + list.getLast());
 
-        System.out.println("SFO is at index "+list.indexOf("San Francisco"));
-        System.out.println("SFO is at last index "+list.lastIndexOf("San Francisco"));
+        System.out.println("SFO is at index " + list.indexOf("San Francisco"));
+        System.out.println("SFO is at last index " + list.lastIndexOf("San Francisco"));
 
         //queue methods
         System.out.println("getting the first element in the list via queue is: " + list.element());
@@ -72,5 +75,39 @@ public class LinkedLists {
         System.out.println("getting the first element in the list via stack peek is: " + list.peek());
 
     }
+
+    private static void traversalWthFor(LinkedList<String> list) {
+        System.out.println("Trip starts at: " + list.getFirst());
+        for (int i = 1; i < list.size(); i++) {
+            System.out.println("\t --> From: " + list.get(i - 1) + " to " + list.get(i));
+        }
+        System.out.println("Trip ends at: " + list.getLast());
+        System.out.println("-".repeat(92));
+    }
+
+    private static void traversalWthEnhancedFor(LinkedList<String> list) {
+        System.out.println("Trip starts at: " + list.getFirst());
+        String prev = list.getFirst();
+        for (String place : list) {
+            System.out.println("\t --> From: " + prev + " to " + place);
+            prev = place;
+        }
+        System.out.println("Trip ends at: " + list.getLast());
+        System.out.println("-".repeat(92));
+    }
+
+    private static void traversalWthIterator(LinkedList<String> list) {
+        var listIter = list.listIterator(1);
+        System.out.println("Trip starts at: " + list.getFirst());
+        String prev = list.getFirst();
+        while (listIter.hasNext()) {
+            String town = listIter.next();
+            System.out.println("\t --> From: " + prev + " to " + town);
+            prev = town;
+        }
+        System.out.println("Trip ends at: " + list.getLast());
+        System.out.println("-".repeat(92));
+    }
+
 
 }
