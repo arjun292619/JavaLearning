@@ -1,6 +1,7 @@
 package dev.lpa.ListCollections;
 
 import java.util.LinkedList;
+import java.util.ListIterator;
 
 public class LinkedListsExample {
     public static void main(String[] args) {
@@ -22,6 +23,8 @@ public class LinkedListsExample {
         traversalWthFor(placesToVisit);
         traversalWthEnhancedFor(placesToVisit);
         traversalWthIterator(placesToVisit);
+
+        loopIterator(placesToVisit);
     }
 
     private static void addMoreElements(LinkedList<String> list) {
@@ -109,5 +112,20 @@ public class LinkedListsExample {
         System.out.println("-".repeat(92));
     }
 
-
+    private static void loopIterator(LinkedList<String> list) {
+//        Iterator<String> iterator = list.iterator();
+        ListIterator<String> listIterator = list.listIterator();
+        while (listIterator.hasNext()) {
+            if (listIterator.next().equals("San Francisco")) {
+                listIterator.remove();
+                listIterator.add("Boise");
+//                list.remove();
+            }
+//            System.out.println("Element: " + iterator.next());
+        }
+        System.out.println(list);
+        while (listIterator.hasPrevious()) {
+            System.out.println("traversing & printing element backwards: " + listIterator.previous());
+        }
+    }
 }
