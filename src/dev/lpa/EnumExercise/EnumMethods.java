@@ -26,6 +26,17 @@ public class EnumMethods {
             Direction direction = getRandomDirection();
             System.out.printf("Name is %s, ordinal value = %d Sign is: %c%n", direction.name(), direction.ordinal(),direction.getDirectionSign());
         }
+        System.out.println(lineSeparator);
+
+        DayOfWeek value2 = DayOfWeek.valueOf("Tues".toUpperCase());
+        System.out.println(value2);
+        System.out.println(lineSeparator);
+
+        DayOfWeek switchedDay = tues.switchDayOfWeek();
+        System.out.println(switchedDay);
+
+        DayOfWeek sat = DayOfWeek.SAT;
+        System.out.println(sat.switchDayOfWeek());
     }
 
     private static DayOfWeek getRandomDay() {
