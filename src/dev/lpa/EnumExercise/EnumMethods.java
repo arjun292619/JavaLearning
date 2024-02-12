@@ -24,7 +24,7 @@ public class EnumMethods {
         System.out.println(lineSeparator);
         for (int i = 0; i < 6; i++) {
             Direction direction = getRandomDirection();
-            System.out.printf("Name is %s, ordinal value = %d Sign is: %c%n", direction.name(), direction.ordinal(),direction.getDirectionSign());
+            System.out.printf("Name is %s, ordinal value = %d Sign is: %c%n", direction.name(), direction.ordinal(), direction.getDirectionSign());
         }
         System.out.println(lineSeparator);
 
@@ -37,6 +37,15 @@ public class EnumMethods {
 
         DayOfWeek sat = DayOfWeek.SAT;
         System.out.println(sat.switchDayOfWeek());
+        System.out.println(lineSeparator);
+        switchDayOfWeek(sat);
+        switchDayOfWeek(tues);
+        System.out.println(lineSeparator);
+
+        for (Topping topping : Topping.values()) {
+            System.out.printf("Topping Name: %-9s : %5.2f%n", topping.name(), topping.getPrice());
+        }
+
     }
 
     private static DayOfWeek getRandomDay() {
@@ -46,8 +55,18 @@ public class EnumMethods {
     }
 
     private static Direction getRandomDirection() {
-        int random = new Random().nextInt(0,4);
+        int random = new Random().nextInt(0, 4);
         Direction[] directions = Direction.values();
         return directions[random];
+    }
+
+    public static void switchDayOfWeek(DayOfWeek weekDay) {
+        int dayNmbr = weekDay.ordinal() + 1;
+        switch (weekDay) {
+            case WED -> System.out.println("Wednesday is the Day " + dayNmbr);
+            case SAT -> System.out.println("Saturday is the Day " + dayNmbr);
+            default -> System.out.println(weekDay.name().charAt(0) +
+                    weekDay.name().substring(1) + "day is the Day " + dayNmbr);
+        }
     }
 }
