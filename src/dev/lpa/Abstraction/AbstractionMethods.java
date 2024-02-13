@@ -16,11 +16,15 @@ public class AbstractionMethods {
         System.out.println(lineSeparator);
 
         Fish fish1 = new Fish("Goldfish", "small", 2);
+        Horse horse1 = new Horse("Jackie", "pony", 100);
 
-        List<Animal> animals = new ArrayList<>(List.of(dog2, dog1, dog3, fish1, new Fish("Barracuda", "big", 590)));
+        List<Animal> animals = new ArrayList<>(List.of(dog2, dog1, dog3, fish1, new Fish("Barracuda", "big", 590), horse1));
 
-        for (Animal animal: animals){
+        for (Animal animal : animals) {
             doAnimalStuff(animal);
+            if(animal instanceof Mammal mammal){
+                mammal.shedHair();
+            }
         }
     }
 
