@@ -1,5 +1,17 @@
 package dev.lpa.Abstraction;
 
+interface FlightEnabled {
+    void takeOff();
+
+    void land();
+
+    void fly();
+}
+
+interface Trackable {
+    void track();
+}
+
 public abstract class Animal {
     protected String type;
     private String size;
