@@ -2,6 +2,8 @@ package dev.lpa.ListCollections;
 
 import java.util.Comparator;
 import java.util.LinkedList;
+import java.util.ListIterator;
+import java.util.Scanner;
 
 record Place(String name, int distance) {
     @Override
@@ -40,6 +42,47 @@ public class LinkedListChallenge {
 
         placesToVist.addFirst(new Place("Sydney", 0));
         System.out.println(placesToVist);
+
+        Scanner scanner = new Scanner(System.in);
+        ListIterator<Place> placIterator = placesToVist.listIterator();
+        boolean quit = false;
+        boolean changeDir = false;
+        char direction = 'F';
+
+        printMenu();
+        while (!quit) {
+            System.out.print("Enter value: ");
+            char menuOption = scanner.nextLine().toUpperCase().charAt(0);
+            switch (menuOption) {
+                case 'F' -> {
+                    System.out.println("Moving in Forward Direction");
+                    if (direction == 'F' && placIterator.hasNext()) {
+                        System.out.println(placIterator.next());
+                    } else {
+                        direction = 'F';
+                        placIterator.next();
+                        if (placIterator.hasNext()) {
+                            System.out.println(placIterator.next());
+                        }
+                    }
+                }
+                case 'B' -> {
+                    System.out.println("Moving in Backward Direction");
+                    if (direction == 'B' && placIterator.hasPrevious()) {
+                        System.out.println(placIterator.previous());
+                    } else {
+                        direction = 'B';
+                        placIterator.previous();
+                        if (placIterator.hasPrevious()) {
+                            System.out.println(placIterator.previous());
+                        }
+                    }
+                }
+                case 'M' -> printMenu();
+                case 'L' -> System.out.println(placesToVist);
+                default -> quit = true;
+            }
+        }
     }
 
     private static void addPlace(LinkedList<Place> list, Place place) {
@@ -49,5 +92,16 @@ public class LinkedListChallenge {
         }
         list.add(place);
         list.sort(Comparator.comparing(Place::distance));
+    }
+
+    private static void printMenu() {
+        System.out.println("""
+                Available actions (select word or letter):
+                (F)orward
+                (B)ackwards
+                (L)ist Places
+                (M)enu
+                (Q)uit
+                """);
     }
 }
