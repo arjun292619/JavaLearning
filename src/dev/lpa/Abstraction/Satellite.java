@@ -10,6 +10,11 @@ enum FlightStages implements Trackable {
             System.out.println("Monitoring " + this);
         }
     }
+
+    public FlightStages getNextStage() {
+        FlightStages[] stages = FlightStages.values();
+        return stages[(this.ordinal() + 1) % stages.length];
+    }
 }
 
 record DragonFly(String name, String type) implements FlightEnabled {
