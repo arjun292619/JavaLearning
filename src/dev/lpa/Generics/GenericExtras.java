@@ -16,7 +16,7 @@ public class GenericExtras {
         for (int i = 0; i < 10; i++) {
             subStudents.add(new StudentSubType());
         }
-        printList(subStudents);
+//        printList(subStudents);
     }
 
     public static void printList(List<StudentType> students) {
