@@ -41,7 +41,6 @@ public class GenericMethods {
         genericFbTeam.addTeamMember(reagan);
 //        genericFbTeam.addTeamMember(harper);
         genericFbTeam.listTeamMembers();
-
     }
 
     public static void scoreResult(BaseballTeam team1, int score1, BaseballTeam team2, int score2) {
