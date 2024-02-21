@@ -1,6 +1,8 @@
 package dev.lpa.Generics;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.Random;
 
 public class Comparing {
     public static void main(String[] args) {
@@ -20,27 +22,41 @@ public class Comparing {
 
         Student tim = new Student("Tim");
         Student[] students = {new Student("Zach"), new Student("Michelle"), new Student("Obama"), new Student("Dexter")};
-        System.out.println(Arrays.toString(students));
+//        System.out.println(Arrays.toString(students));
         Arrays.sort(students);
         System.out.println(Arrays.toString(students));
-
+        Arrays.sort(students, new StudentGpaComparator().reversed());
+        System.out.println(Arrays.toString(students));
     }
 }
 
 class Student implements Comparable<Student> {
-    private String name;
+    private static int LAST_ID = 1000;
+    protected static Random random = new Random();
+    protected String name;
+    private int id;
+    protected double gpa;
 
     public Student(String name) {
         this.name = name;
+        id = LAST_ID++;
+        gpa = random.nextDouble(1.0, 4.0);
     }
 
     @Override
     public String toString() {
-        return name;
+        return "%d - %s(%4.2f)".formatted(id, name, gpa);
     }
 
     @Override
     public int compareTo(Student o) {
-        return this.name.compareTo(o.name);
+        return Integer.compare(id, o.id);
+    }
+}
+
+class StudentGpaComparator implements Comparator<Student> {
+    @Override
+    public int compare(Student o1, Student o2) {
+        return (o1.gpa + o1.name).compareTo(o2.gpa + o2.name);
     }
 }
