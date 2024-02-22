@@ -44,7 +44,7 @@ public class Nested {
                 new StoreEmployee(10024, "Dwight", 2011, "Walmart"),
                 new StoreEmployee(10024, "Michael", 2010, "Target")
         ));
-
+        System.out.println("Store Employees");
         System.out.println(storeEmployees);
         storeEmployees.sort(new StoreEmployee().new storeEmpComparator<>());
         for (var storeEmp : storeEmployees) {

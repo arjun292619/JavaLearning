@@ -18,6 +18,10 @@ public class GenericExtras {
             subStudents.add(new StudentSubType());
         }
         printList(subStudents);
+
+        QueryList<StudentType> queryList = new QueryList<>(students);
+        var javaStudents = queryList.getMatches("course", "Java");
+        printList(javaStudents);
     }
 
 //    public static <T extends StudentType> void printList(List<T> students) {

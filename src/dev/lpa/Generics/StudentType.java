@@ -2,7 +2,7 @@ package dev.lpa.Generics;
 
 import java.util.Random;
 
-public class StudentType {
+public class StudentType implements QueryItem {
     private String name;
     private String course;
     private int yearStarted;
@@ -25,5 +25,16 @@ public class StudentType {
 
     public int getYearStarted() {
         return yearStarted;
+    }
+
+    @Override
+    public boolean matchFieldValue(String field, String value) {
+        String fname = field.toUpperCase();
+        return switch (fname) {
+            case "NAME" -> value.equalsIgnoreCase(this.name);
+            case "COURSE" -> value.equalsIgnoreCase(this.course);
+            case "YEARSTARTED" -> yearStarted == Integer.parseInt(value);
+            default -> false;
+        };
     }
 }
