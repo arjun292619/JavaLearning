@@ -20,16 +20,24 @@ public class GenericExtras {
         printList(subStudents);
     }
 
-    public static <T extends StudentType> void printList(List<T> students) {
-        for (T student : students) {
+//    public static <T extends StudentType> void printList(List<T> students) {
+//        for (T student : students) {
+//            System.out.println(student);
+//        }
+//        System.out.println();
+//    }
+
+    public static void printList(List<? extends StudentType> students) {
+        for (StudentType student : students) {
             System.out.println(student);
         }
         System.out.println();
     }
 
-//    public static void printList(List<StudentType> students) {
-//        for (StudentType student : students) {
+//    public static void printList(List<? super StudentSubType> students) {
+//        for (var student : students) {
 //            System.out.println(student);
 //        }
+//        System.out.println();
 //    }
 }
