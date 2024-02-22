@@ -5,8 +5,20 @@ import java.util.Comparator;
 public class StoreEmployee extends Employee {
     private String storeName;
 
-    public class storeEmpComparator<T extends StoreEmployee> implements Comparator<StoreEmployee> {
+    public StoreEmployee() {
+    }
 
+    public StoreEmployee(int id, String name, int yearStarted, String storeName) {
+        super(id, name, yearStarted);
+        this.storeName = storeName;
+    }
+
+    @Override
+    public String toString() {
+        return "%-8s %s".formatted(storeName, super.toString());
+    }
+
+    public class storeEmpComparator<T extends StoreEmployee> implements Comparator<StoreEmployee> {
         @Override
         public int compare(StoreEmployee o1, StoreEmployee o2) {
             int result = o1.storeName.compareTo(o2.storeName);
@@ -15,10 +27,5 @@ public class StoreEmployee extends Employee {
             }
             return result;
         }
-    }
-
-    public StoreEmployee(int id, String name, int yearStarted, String storeName) {
-        super(id, name, yearStarted);
-        this.storeName = storeName;
     }
 }

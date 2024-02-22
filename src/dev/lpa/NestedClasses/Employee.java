@@ -7,6 +7,15 @@ public class Employee {
     private int id;
     protected int yearStarted;
 
+    public Employee() {
+    }
+
+    public Employee(int id, String name, int yearStarted) {
+        this.name = name;
+        this.id = id;
+        this.yearStarted = yearStarted;
+    }
+
     public static class EmployeeComparator implements Comparator<Employee> {
         String sortType;
 
@@ -27,12 +36,6 @@ public class Employee {
             };
 //            return Integer.compare(o1.yearStarted, o2.yearStarted);
         }
-    }
-
-    public Employee(int id, String name, int yearStarted) {
-        this.name = name;
-        this.id = id;
-        this.yearStarted = yearStarted;
     }
 
     public String getName() {
