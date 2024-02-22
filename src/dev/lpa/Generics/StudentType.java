@@ -20,7 +20,7 @@ public class StudentType {
 
     @Override
     public String toString() {
-        return "%-15s %-15s %d %n".formatted(name, course, yearStarted);
+        return "%-15s %-15s %d".formatted(name, course, yearStarted);
     }
 
     public int getYearStarted() {

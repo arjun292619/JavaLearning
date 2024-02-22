@@ -10,18 +10,26 @@ public class GenericExtras {
         for (int i = 0; i < 10; i++) {
             students.add(new StudentType());
         }
+        students.add(new StudentSubType());
         printList(students);
 
         List<StudentSubType> subStudents = new ArrayList<>();
         for (int i = 0; i < 10; i++) {
             subStudents.add(new StudentSubType());
         }
-//        printList(subStudents);
+        printList(subStudents);
     }
 
-    public static void printList(List<StudentType> students) {
-        for (StudentType student : students) {
+    public static <T extends StudentType> void printList(List<T> students) {
+        for (T student : students) {
             System.out.println(student);
         }
+        System.out.println();
     }
+
+//    public static void printList(List<StudentType> students) {
+//        for (StudentType student : students) {
+//            System.out.println(student);
+//        }
+//    }
 }

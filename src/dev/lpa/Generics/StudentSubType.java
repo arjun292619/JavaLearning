@@ -13,6 +13,6 @@ public class StudentSubType extends StudentType {
 
     @Override
     public String toString() {
-        return "%s %8.1f".formatted(super.toString(), getPercentCompleted());
+        return "%s %8.2f%%".formatted(super.toString(), getPercentCompleted());
     }
 }
