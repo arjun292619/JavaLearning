@@ -5,7 +5,7 @@ import java.util.Comparator;
 public class Employee {
     private String name;
     private int id;
-    private int yearStarted;
+    protected int yearStarted;
 
     public static class EmployeeComparator implements Comparator<Employee> {
         String sortType;

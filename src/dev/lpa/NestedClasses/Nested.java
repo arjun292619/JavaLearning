@@ -3,7 +3,7 @@ package dev.lpa.NestedClasses;
 import java.util.ArrayList;
 import java.util.List;
 
-public class StaticNested {
+public class Nested {
     public static void main(String[] args) {
         List<Employee> employees = new ArrayList<>(List.of(
                 new Employee(10001, "Ralph", 2015),
