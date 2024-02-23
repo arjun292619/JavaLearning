@@ -52,7 +52,7 @@ public class Nested {
         for (var storeEmp : storeEmployees) {
             System.out.println(storeEmp);
         }
-
+// anonymous classes
         List<StoreEmployee> houseEmployees = new ArrayList<>(List.of(
                 new StoreEmployee(10023, "House", 2015, "Walmart"),
                 new StoreEmployee(10008, "Chase", 2021, "Target"),
@@ -74,5 +74,38 @@ public class Nested {
         });
 
         System.out.println(houseEmployees);
+        addPigLatinName(houseEmployees);
+    }
+
+    public static void addPigLatinName(List<? extends StoreEmployee> list) {
+        class PigLatin implements Comparable<PigLatin> {
+            private String pigLatinName;
+            private Employee employee;
+
+            public PigLatin(String pigLatinName, Employee employee) {
+                this.employee = employee;
+                this.pigLatinName = pigLatinName;
+            }
+
+            @Override
+            public String toString() {
+                return employee.toString() + " " + pigLatinName;
+            }
+
+            @Override
+            public int compareTo(PigLatin o) {
+                return this.pigLatinName.compareTo(o.pigLatinName);
+            }
+        }
+        List<PigLatin> pigListNames = new ArrayList<>(list.size());
+        for (var element : list) {
+            String name = element.getName();
+            String pigLatin = name.substring(1) + name.charAt(0) + "ay";
+            pigListNames.add(new PigLatin(pigLatin, element));
+        }
+        pigListNames.sort(null);
+        for (var element : pigListNames) {
+            System.out.println(element);
+        }
     }
 }
