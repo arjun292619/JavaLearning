@@ -1,6 +1,7 @@
 package dev.lpa.NestedClasses;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 
 public class Nested {
@@ -47,8 +48,31 @@ public class Nested {
         System.out.println("Store Employees");
         System.out.println(storeEmployees);
         storeEmployees.sort(new StoreEmployee().new storeEmpComparator<>());
+//        storeEmployees.sort(new Employee.EmployeeComparator());
         for (var storeEmp : storeEmployees) {
             System.out.println(storeEmp);
         }
+
+        List<StoreEmployee> houseEmployees = new ArrayList<>(List.of(
+                new StoreEmployee(10023, "House", 2015, "Walmart"),
+                new StoreEmployee(10008, "Chase", 2021, "Target"),
+                new StoreEmployee(10065, "Olivia", 2018, "Amazon"),
+                new StoreEmployee(10345, "Allison", 2016, "Costco"),
+                new StoreEmployee(10049, "Taub", 2014, "Costco"),
+                new StoreEmployee(10165, "James", 2011, "Walmart"),
+                new StoreEmployee(10454, "Lisa", 2010, "Target")
+        ));
+        houseEmployees.sort(new Comparator<StoreEmployee>() {
+            @Override
+            public int compare(StoreEmployee o1, StoreEmployee o2) {
+                int result = o1.getName().compareTo(o2.getName());
+                if (result == 0) {
+                    return Integer.compare(o1.yearStarted, o2.yearStarted);
+                }
+                return result;
+            }
+        });
+
+        System.out.println(houseEmployees);
     }
 }

@@ -3,7 +3,7 @@ package dev.lpa.Generics;
 import java.util.ArrayList;
 import java.util.List;
 
-public class QueryList<T extends QueryItem> {
+public class QueryList<T extends StudentType & QueryItem> {
     private List<T> items;
 
     public QueryList(List<T> items) {
