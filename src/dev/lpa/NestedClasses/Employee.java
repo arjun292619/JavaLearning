@@ -16,7 +16,7 @@ public class Employee {
         this.yearStarted = yearStarted;
     }
 
-    public static class EmployeeComparator implements Comparator<Employee> {
+    public static class EmployeeComparator<T extends Employee> implements Comparator<Employee> {
         String sortType;
 
         public EmployeeComparator() {
